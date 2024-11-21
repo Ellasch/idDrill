@@ -1,31 +1,26 @@
-import { useState } from 'react'
 import React from 'react'
+import { useState } from 'react'
 import './App.css'
-<<<<<<< HEAD:my-react-app/src/App.tsx
 import PinInput from 'react-pin-input'
 import { Button } from 'react-bootstrap'
 
-=======
-import React from 'react'
->>>>>>> 1ea8ef2104e92daf1bd91aa5d9d36517859259c6:my-react-app/client/src/App.tsx
+
 
 function App() {
-  const [digits, setDigits] = useState(0)
+  const [digits, setDigits] = useState(0);
+  const [clicked, setClicked] = useState(false);
 
   return (
-    <>
-      <div style={{display: 'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+      <div style={{display: 'flex', flexDirection:'column', alignItems:'center', marginTop:'20vh'}}>
         <p style={{fontSize:40, fontWeight:'bold'}}>Enter the first 8 digits of your id</p>
 
         <PinInput 
           length={8}
           initialValue=""
-          secret
-          secretDelay={100} 
           onChange={(value, index) => {}} 
           type="numeric" 
           inputMode="number"
-          style={{padding: '20px'}}  
+          style={{padding: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}  
           inputStyle={{borderColor: 'black'}}
           inputFocusStyle={{borderColor: 'purple'}}
           onComplete={(value, index) => {}}
@@ -33,11 +28,25 @@ function App() {
           regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
         />
 
-        <Button variant='danger' 
-          style={{marginTop:40, fontSize:30, color:'white', backgroundColor:'purple'}}
-          >Send</Button>
+        <Button 
+        style={{fontSize: 30, marginTop:20
+          ,borderRadius:10, padding: '10px 20px', backgroundColor: 'purple', color: 'white'}}
+           id='send_btn'
+           onClick={() => {setClicked((prev) => !prev)}}
+           >Send</Button>
+
+         {
+          clicked ? 
+          <p 
+            style={{fontSize:30, fontWeight:'bold', marginTop:20}}
+            >Your last digit is: {digits}
+          </p>
+           : null
+         }
         </div>
-    </>
+
+        
+
 
 
   )
