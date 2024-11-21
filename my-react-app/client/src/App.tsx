@@ -1,9 +1,13 @@
 import { useState } from 'react'
 import React from 'react'
 import './App.css'
+<<<<<<< HEAD:my-react-app/src/App.tsx
 import PinInput from 'react-pin-input'
 import { Button } from 'react-bootstrap'
 
+=======
+import React from 'react'
+>>>>>>> 1ea8ef2104e92daf1bd91aa5d9d36517859259c6:my-react-app/client/src/App.tsx
 
 function App() {
   const [digits, setDigits] = useState(0)
