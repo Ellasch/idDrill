@@ -7,7 +7,7 @@ import { Button } from 'react-bootstrap'
 
 
 function App() {
-  const [digits, setDigits] = useState(0);
+  const [digits, setDigits] = useState("");
   const [clicked, setClicked] = useState(false);
 
   return (
@@ -17,7 +17,7 @@ function App() {
         <PinInput 
           length={8}
           initialValue=""
-          onChange={(value, index) => {}} 
+          onChange={(value, index) => {setDigits(value)}} 
           type="numeric" 
           inputMode="number"
           style={{padding: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center'}}  
@@ -30,9 +30,10 @@ function App() {
 
         <Button 
         style={{fontSize: 30, marginTop:20
-          ,borderRadius:10, padding: '10px 20px', backgroundColor: 'purple', color: 'white'}}
+          ,borderRadius:10, padding: '10px 20px', color: 'pink', borderColor: 'pink'}}
            id='send_btn'
            onClick={() => {setClicked((prev) => !prev)}}
+          disabled={digits.length !== 8}
            >Send</Button>
 
          {
