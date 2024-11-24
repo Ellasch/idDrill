@@ -34,7 +34,7 @@ function App() {
            onClick={async() => {
            try{
             setLastDigit((
-              await axios.post(`${baseUrl}`,)).data); 
+              await axios.post(`${baseUrl}`,{digits})).data); 
            }catch(err){
             alert(`Error - ${err}`);
            }}}
