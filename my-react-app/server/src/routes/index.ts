@@ -34,16 +34,9 @@ router.post('/', (req, res) => {
 });
 
 const calcLast = (first8: Array<number>) => {
- 
  const newArr = first8.map((digit, index) => {
     const multiplier = index % 2 == 0 ? 1 : 2;
-    digit =  digit * multiplier;
-    
-    if (digit > 9) {
-      digit = Math.trunc(digit / 10) + digit % 10;
-    }
-
-    return digit;
+    return Math.trunc(digit * multiplier / 10) + digit * multiplier % 10;
  })
 
  const sum = newArr.reduce((last, curr) => last + curr, 0);
