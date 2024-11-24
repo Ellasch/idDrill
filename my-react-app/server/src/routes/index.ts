@@ -15,8 +15,18 @@ const router = Router();
 
 router.post('/', (req, res) => {
   const first8: Array<number> = req.body.digits;
-  const last = calcLast(first8);
-  res.send(JSON.stringify(last));
+  const lastDigit = calcLast(first8);
+
+  try{
+    myDataSource.getRepository('Id')
+    .save({first8Digits: parseInt(first8.join('')), lastDigit: lastDigit, uuid: "21"});
+    console.log(`${first8} has been saved to the database`);
+    
+  } catch(err){
+    throw new Error(JSON.stringify(err));
+  }
+
+  res.send(JSON.stringify(lastDigit));
 });
 
 const calcLast = (first8: Array<number>) => {

@@ -3,7 +3,7 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity()
 export class Id {
   @PrimaryColumn()
-  uuid!: number;
+  uuid!: string;
 
   @Column()
   first8Digits!: number;
