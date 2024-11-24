@@ -3,12 +3,14 @@ import { useState } from 'react'
 import './App.css'
 import PinInput from 'react-pin-input'
 import { Button } from 'react-bootstrap'
+import axios from 'axios'
 
-
+const baseUrl = 'http://localhost:3000'
 
 function App() {
   const [digits, setDigits] = useState("");
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
+  const [lastDigit, setLastDigit] = useState(0);
 
   return (
       <div style={{display: 'flex', flexDirection:'column', alignItems:'center', marginTop:'20vh'}}>
@@ -32,15 +34,18 @@ function App() {
         style={{fontSize: 30, marginTop:20
           ,borderRadius:10, padding: '10px 20px', color: 'pink', borderColor: 'pink'}}
            id='send_btn'
-           onClick={() => {setClicked((prev) => !prev)}}
+           onClick={async() => {
+            console.log(digits);
+           setLastDigit((await axios.get(`${baseUrl}/${digits}`)).data);
+          }}
           disabled={digits.length !== 8}
            >Send</Button>
 
          {
-          clicked ? 
+          lastDigit ? 
           <p 
             style={{fontSize:30, fontWeight:'bold', marginTop:20}}
-            >Your last digit is: {digits}
+            >Your last digit is: {lastDigit}
           </p>
            : null
          }

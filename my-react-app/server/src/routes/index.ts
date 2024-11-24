@@ -6,7 +6,7 @@ router.get('/:8Digits', (req, res) => {
   const first8 = req.params['8Digits'];
   
   const last = calcLast(first8);
-  res.send(`last: ${last}`);
+  res.send(JSON.stringify(last));
 });
 
 const calcLast = (first8: string) => {
