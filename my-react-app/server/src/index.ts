@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import cors from 'cors';
 import express from 'express';
-import routes from './routes/index.ts';
+import indexRoute from './routes/index.ts';
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-app.use('/', routes);
+app.use('/', indexRoute);
 
 const port = 3000;
 
