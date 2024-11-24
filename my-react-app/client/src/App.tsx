@@ -32,9 +32,12 @@ function App() {
           ,borderRadius:10, padding: '10px 20px', color: 'pink', borderColor: 'pink'}}
            id='send_btn'
            onClick={async() => {
+           try{
             setLastDigit((
-            await axios.post(`${baseUrl}`,{digits})).data);
-          }}
+              await axios.post(`${baseUrl}`,)).data); 
+           }catch(err){
+            alert(`Error - ${err}`);
+           }}}
           disabled={isArrayFull(digits) ? false : true}
            >Send</Button>
 
