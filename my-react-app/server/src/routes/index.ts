@@ -1,4 +1,15 @@
 import { Router } from 'express';
+import { myDataSource } from '../db/dataSource/dataSource.ts';
+
+myDataSource
+    .initialize()
+    .then(() => {
+        console.log("Data Source has been initialized!")
+    })
+    .catch((err) => {
+        console.error("Error during Data Source initialization:", err)
+    })
+
 
 const router = Router();
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import './App.css'
 import { PinInput } from 'react-input-pin-code';
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
@@ -9,7 +8,6 @@ const baseUrl = 'http://localhost:3000'
 
 function App() {
   const [digits, setDigits] = useState(new Array<string>(8).fill(""));
-  // const [clicked, setClicked] = useState(false);
   const [lastDigit, setLastDigit] = useState(0);
 
   return (
