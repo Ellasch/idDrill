@@ -19,6 +19,7 @@
     "@babel/preset-env": "^7.16.11",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/uuid": "^10.0.0",
     "nodemon": "^2.0.15",
     "ts-node": "^10.9.2"
   },

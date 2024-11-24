@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { myDataSource } from '../db/dataSource/dataSource.ts';
+import { v4 as uuid } from 'uuid';
 
 myDataSource
     .initialize()
@@ -18,8 +19,8 @@ router.post('/', (req, res) => {
   const lastDigit = calcLast(first8);
 
   try{
-    myDataSource.getRepository('Id')
-    .save({first8Digits: parseInt(first8.join('')), lastDigit: lastDigit, uuid: "21"});
+    myDataSource.getRepository('id')
+    .save({first8Digits: parseInt(first8.join('')), lastDigit: lastDigit, uuid: uuid()});
     console.log(`${first8} has been saved to the database`);
     
   } catch(err){
