@@ -20,9 +20,12 @@ router.post('/', (req, res) => {
 
   try{
     myDataSource.getRepository('id')
-    .save({first8Digits: parseInt(first8.join('')), lastDigit: lastDigit, uuid: uuid()});
-    console.log(`${first8} has been saved to the database`);
-    
+    .save({
+      first8Digits: parseInt(first8.join('')),
+       lastDigit: lastDigit,
+        uuid: uuid()});
+
+    console.log(`${first8.join('')} has been saved to the database`);
   } catch(err){
     throw new Error(JSON.stringify(err));
   }
@@ -35,7 +38,7 @@ const calcLast = (first8: Array<number>) => {
  const newArr = first8.map((digit, index) => {
     const multiplier = index % 2 == 0 ? 1 : 2;
     digit =  digit * multiplier;
-
+    
     if (digit > 9) {
       digit = Math.trunc(digit / 10) + digit % 10;
     }
@@ -45,7 +48,7 @@ const calcLast = (first8: Array<number>) => {
 
  const sum = newArr.reduce((last, curr) => last + curr, 0);
 
- return Math.trunc(sum/10) * 10 + 10 - sum;
+ return Math.trunc(sum / 10) * 10 + 10 - sum;
 }
 
 export default router;
