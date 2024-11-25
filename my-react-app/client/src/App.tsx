@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { useState } from 'react'
 import { PinInput } from 'react-input-pin-code';
 import { Button } from 'react-bootstrap'
@@ -16,7 +16,7 @@ function App() {
 
          <PinInput 
          values={digits}
-         onChange={(value, index, values) => setDigits(values)}
+         onChange={(_value, _index, values) => setDigits(values)}
          type='number'
          borderColor='pink'
          placeholder=''
@@ -36,7 +36,7 @@ function App() {
            }catch(err){
             alert(`Error - ${err}`);
            }}}
-          disabled={isArrayFull(digits) ? false : true}
+          disabled={digits.every((digit) => digit !== "") ? false : true}
            >Send</Button>
 
          {
@@ -51,8 +51,5 @@ function App() {
   )
 }
 
-const isArrayFull = (arr : Array<string>) => {
-  return arr.every((digit) => digit !== "");
-}
 
 export default App
