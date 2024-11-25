@@ -16,7 +16,7 @@ function App() {
 
          <PinInput 
          values={digits}
-         onChange={(_value, _index, values) => setDigits(values)}
+         onChange={(_value, _index, values) => setDigits(()=> values)}
          type='number'
          borderColor='pink'
          placeholder=''
@@ -31,8 +31,9 @@ function App() {
            id='send_btn'
            onClick={async() => {
            try{
-            setLastDigit((
-              await axios.post(`${baseUrl}`,{digits})).data); 
+            const digit = (await axios.post(`${baseUrl}`,{digits})).data;
+            
+            setLastDigit(() => digit);
            }catch(err){
             alert(`Error - ${err}`);
            }}}
