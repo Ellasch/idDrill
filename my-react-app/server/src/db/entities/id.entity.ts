@@ -1,13 +1,13 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, PrimaryColumn } from "typeorm"
 
-@Entity({schema: 'ella'})
+@Entity({ schema: "ella" })
 export class Id {
   @PrimaryColumn()
-  uuid!: string;
+  uuid!: string
 
-  @Column()
-  first8Digits!: number;
+  @Column({name:'first_8_digits'})
+  first8Digits!: string
 
-  @Column()
-  lastDigit!: number; 
+  @Column({name:'last_digit'})
+  lastDigit!: string
 }
