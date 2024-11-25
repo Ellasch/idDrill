@@ -1,6 +1,5 @@
-import React from 'react'
+
 import { useState } from 'react'
-import './App.css'
 import { PinInput } from 'react-input-pin-code';
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
@@ -9,7 +8,6 @@ const baseUrl = 'http://localhost:3000'
 
 function App() {
   const [digits, setDigits] = useState(new Array<string>(8).fill(""));
-  // const [clicked, setClicked] = useState(false);
   const [lastDigit, setLastDigit] = useState(0);
 
   return (
@@ -18,7 +16,7 @@ function App() {
 
          <PinInput 
          values={digits}
-         onChange={(value, index, values) => setDigits(values)}
+         onChange={(_value, _index, values) => setDigits(values)}
          type='number'
          borderColor='pink'
          placeholder=''
@@ -38,7 +36,7 @@ function App() {
            }catch(err){
             alert(`Error - ${err}`);
            }}}
-          disabled={isArrayFull(digits) ? false : true}
+          disabled={digits.every((digit) => digit !== "") ? false : true}
            >Send</Button>
 
          {
@@ -53,8 +51,5 @@ function App() {
   )
 }
 
-const isArrayFull = (arr : Array<string>) => {
-  return arr.every((digit) => digit !== "");
-}
 
 export default App
