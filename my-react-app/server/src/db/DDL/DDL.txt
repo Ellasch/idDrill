@@ -1,0 +1,5 @@
+CREATE TABLE if NOT exists ella.id (
+	uuid text,
+	first_8_digits integer,
+	last_digit integer
+)
